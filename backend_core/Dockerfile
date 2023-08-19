@@ -11,8 +11,11 @@ RUN apk update \
 COPY Pipfile Pipfile.lock ./
 
 RUN pip install -U pipenv
-
 RUN pipenv install --system
 
+COPY ./entrypoint.sh .
+RUN chmod +x ./entrypoint.sh
 
 COPY . .
+
+ENTRYPOINT ["./entrypoint.sh"]
