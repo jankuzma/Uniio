@@ -2,6 +2,7 @@ services:
   backend_core:
     build:
       context: ./backend_core
+      dockerfile: Dockerfile.prod
     command: gunicorn uniio.wsgi:application --bind 0.0.0.0:8000
     env_file:
       - ./backend_core/env/.env
